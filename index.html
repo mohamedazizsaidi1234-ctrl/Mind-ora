@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MINDORA – Train Your Mind. Challenge Your Memory.</title>
+<style>
+:root{--bg:#071722;--sf:#102B35;--ac:#79E6C4;--tx:#fff;--mu:#9bb8bf;--bd:rgba(121,230,196,.22);--gl:rgba(16,43,53,.62);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:radial-gradient(900px 500px at 80% -10%,rgba(121,230,196,.14),transparent),radial-gradient(700px 500px at -10% 100%,rgba(40,170,190,.14),transparent),var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+button{touch-action:manipulation;cursor:pointer}
+.wrap{max-width:760px;margin:0 auto;padding:14px}
+.hidden{display:none!important}
+.glass{background:var(--gl);border:1px solid var(--bd);border-radius:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.btn{min-height:48px;padding:0 20px;border-radius:14px;border:1px solid var(--bd);background:var(--sf);font-weight:600}
+.btn.pri{background:linear-gradient(135deg,#79E6C4,#3fc4c9);color:#06222b;border:0;font-weight:800}
+.btn.sm{min-height:42px;padding:0 14px}
+.btn:active{transform:scale(.97)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo i{font-style:normal;font-size:30px;width:52px;height:52px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--sf),#0b3a44);border:1px solid var(--bd)}
+h1{margin:0;font-size:28px;letter-spacing:.14em;color:var(--ac)}
+.slogan{color:var(--mu);font-size:14px;margin:2px 0 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sp{justify-content:space-between}
+.card-p{padding:16px;margin-top:14px}
+.nick{background:#0a2430;border:1px solid var(--bd);border-radius:12px;padding:10px 12px;min-height:44px;width:100%;max-width:220px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.seg button{padding:12px 6px;border-radius:14px;border:1px solid var(--bd);background:#0a2430;min-height:64px}
+.seg button.on{background:rgba(121,230,196,.16);border-color:var(--ac);box-shadow:0 0 14px rgba(121,230,196,.25)}
+.seg small{display:block;color:var(--mu)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.st{padding:10px 6px;text-align:center;border-radius:14px;background:#0a2430;border:1px solid var(--bd)}
+.st b{display:block;font-size:20px;color:var(--ac);font-variant-numeric:tabular-nums}
+.st span{font-size:12px;color:var(--mu)}
+.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+@media(min-width:620px){.stats{grid-template-columns:repeat(6,1fr)}}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,1.8vw,12px);margin:8px auto;width:min(100%,560px,calc((100dvh - 330px)*4/var(--rows)));perspective:900px}
+.card{aspect-ratio:1;border:0;padding:0;background:none;position:relative;border-radius:14px}
+.in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.3,.7,.3,1)}
+.card.f .in{transform:rotateY(180deg)}
+.fc{position:absolute;inset:0;display:grid;place-items:center;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--bd);pointer-events:none}
+.bk{background:linear-gradient(145deg,#14414d,var(--sf));font-size:clamp(22px,8vw,40px);box-shadow:inset 0 0 18px rgba(121,230,196,.08)}
+.fr{transform:rotateY(180deg);background:linear-gradient(145deg,#eafaf5,#bfeee0);font-size:clamp(26px,10vw,52px)}
+.card.m .fr{box-shadow:0 0 18px 3px rgba(121,230,196,.75);border-color:var(--ac)}
+.card.m{pointer-events:none}
+.ov{position:fixed;inset:0;z-index:20;background:rgba(4,12,18,.8);display:grid;place-items:center;padding:16px;overflow:auto}
+.box{width:min(100%,520px);max-height:90dvh;overflow:auto;padding:18px;background:#0d2530;border:1px solid var(--bd);border-radius:20px}
+.box h2{margin:0 0 10px}
+.cd{font-size:96px;font-weight:900;color:var(--ac);animation:pop .8s}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th,.tbl td{padding:7px 4px;text-align:left;border-bottom:1px solid rgba(255,255,255,.07)}
+.tbl th{color:var(--mu);font-weight:600}
+.sc{overflow-x:auto}
+.badge{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;background:#0a2430;margin:8px 0;border:1px solid var(--bd)}
+.badge.lock{opacity:.45;filter:grayscale(1)}
+.badge i{font-style:normal;font-size:28px}
+.note{color:var(--mu);font-size:12px;margin:8px 0 0}
+.tg{display:flex;justify-content:space-between;align-items:center;padding:12px 0;gap:10px}
+input[type=range]{width:100%;accent-color:#79E6C4}
+canvas#cf{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
+.big{font-size:40px;font-weight:900;color:var(--ac);text-align:center;margin:6px 0}
+.new{background:rgba(121,230,196,.18);border:1px solid var(--ac);border-radius:12px;padding:8px;text-align:center;margin:8px 0}
+@media(prefers-reduced-motion:reduce){.in{transition:none}.cd{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section id="home">
+  <div class="glass card-p" style="margin-top:0">
+    <div class="logo"><i>🧠</i><div><h1>MINDORA</h1><p class="slogan">Train Your Mind. Challenge Your Memory.</p></div></div>
+  </div>
+  <div class="glass card-p">
+    <div class="row sp"><div class="row"><span style="font-size:26px">👤</span><input id="nick" class="nick" maxlength="14" aria-label="Nickname"></div><div class="note" id="rank"></div></div>
+    <div class="seg" id="seg"></div>
+    <div class="grid3"><div class="st"><b id="hb">0</b><span>Best score</span></div><div class="st"><b id="ht">–</b><span>Best time</span></div><div class="st"><b id="hg">0</b><span>Games played</span></div></div>
+    <div class="grid3" style="margin-top:8px"><div class="st"><b id="hm">0</b><span>Total matches</span></div><div class="st"><b id="hw">0</b><span>Avg accuracy</span></div><div class="st"><b id="hs">0</b><span>Badges</span></div></div>
+    <button class="btn pri" style="width:100%;margin-top:14px;min-height:56px;font-size:18px" data-a="start">▶ Start game</button>
+    <div class="menu">
+      <button class="btn" data-a="daily">📅 Daily challenge</button>
+      <button class="btn" data-a="lb">🏆 Leaderboard</button>
+      <button class="btn" data-a="ach">🎖 Achievements</button>
+      <button class="btn" data-a="set">🔊 Sound settings</button>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="hidden">
+  <div class="row sp"><button class="btn sm" data-a="home">⌂ Home</button><b id="gt" style="color:var(--ac)"></b><div class="row"><button class="btn sm" data-a="pause">⏸</button><button class="btn sm" data-a="restart">↻</button></div></div>
+  <div class="stats">
+    <div class="st"><b id="s-t">0:00</b><span>Time</span></div><div class="st"><b id="s-a">0</b><span>Attempts</span></div><div class="st"><b id="s-m">0</b><span>Matches</span></div>
+    <div class="st"><b id="s-x">0</b><span>Mistakes</span></div><div class="st"><b id="s-c">100%</b><span>Accuracy</span></div><div class="st"><b id="s-s">0</b><span>Score</span></div>
+  </div>
+  <div id="board" class="board"></div>
+</section>
+</div>
+<div id="sheet" class="ov hidden"><div class="box glass" id="bx"></div></div>
+<canvas id="cf" class="hidden"></canvas>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const EM=[["🧠","Brain"],["💡","Light bulb"],["🔬","Microscope"],["⚙️","Gear"],["🚀","Rocket"],["🎯","Target"],["🧩","Puzzle"],["🔋","Battery"],["💻","Computer"],["🔭","Telescope"],["📚","Books"],["⚡","Lightning"]].map(e=>e[0]);
+const DF={easy:{n:"Easy",p:4,m:1,rows:2},medium:{n:"Medium",p:8,m:1.5,rows:4},hard:{n:"Hard",p:12,m:2,rows:6},daily:{n:"Daily",p:8,m:1.5,rows:4}};
+const AC=[["first","🏅","First Victory","Complete your first game."],["perfect","🧠","Perfect Memory","Finish without mistakes."],["speed","⚡","Speed Master","Finish under 60 seconds."],["champ","👑","Brain Champion","Complete Hard mode."],["five","🔥","Consistency","Win five games."],["acc","🎯","Accuracy Expert","Achieve 100% accuracy."]];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=ms=>{const s=Math.floor(ms/1000);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")};
+
+/* ---------- storage ---------- */
+let D={name:"Player",results:[],ach:{},snd:{sfx:true,music:false,vol:.6},diff:"easy"};
+try{const r=JSON.parse(localStorage.getItem("mindora_v1")||"null");if(r&&typeof r==="object"){
+ if(typeof r.name==="string")D.name=r.name.slice(0,14)||"Player";
+ if(Array.isArray(r.results))D.results=r.results.filter(x=>x&&DF[x.d]&&isFinite(x.s)&&isFinite(x.t)).slice(-500);
+ if(r.ach&&typeof r.ach==="object")D.ach=r.ach;
+ if(r.snd&&typeof r.snd==="object")D.snd={sfx:r.snd.sfx!==false,music:!!r.snd.music,vol:Math.min(1,Math.max(0,+r.snd.vol||.6))};
+ if(DF[r.diff]&&r.diff!=="daily")D.diff=r.diff;}}catch(e){}
+const save=()=>{try{localStorage.setItem("mindora_v1",JSON.stringify(D))}catch(e){}};
+
+/* ---------- audio ---------- */
+let AX=null,mg=null,mt=null;
+function ctx(){if(!AX){try{AX=new(window.AudioContext||window.webkitAudioContext)();mg=AX.createGain();mg.connect(AX.destination);mg.gain.value=D.snd.vol*.25}catch(e){return null}}
+ if(AX.state==="suspended")AX.resume();return AX}
+function tone(f,d,type="sine",v=.25,at=0,dest){const a=ctx();if(!a)return;const o=a.createOscillator(),g=a.createGain(),t=a.currentTime+at;
+ o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+ o.connect(g);g.connect(dest||a.destination);o.start(t);o.stop(t+d+.05)}
+function sfx(n){if(!D.snd.sfx)return;const v=D.snd.vol*.5;
+ const P={flip:()=>tone(520,.07,"triangle",v*.5),match:()=>{tone(660,.15,"sine",v);tone(880,.2,"sine",v,.1)},bad:()=>tone(180,.22,"triangle",v*.8),click:()=>tone(440,.05,"square",v*.2),cd:()=>tone(520,.12,"sine",v),go:()=>tone(880,.3,"sine",v),
+ lvl:()=>[523,659,784].forEach((f,i)=>tone(f,.25,"sine",v,i*.12)),win:()=>[523,659,784,1047,784,1047,1319].forEach((f,i)=>tone(f,.3,"triangle",v,i*.13))};
+ try{P[n]&&P[n]()}catch(e){}}
+function music(on){clearInterval(mt);mt=null;if(!on)return;if(!ctx())return;mg.gain.value=D.snd.vol*.25;
+ const sc=[261.6,293.7,329.6,392,440,523.3],ch=[[0,2,4],[1,3,5],[0,3,4],[2,4,5]];let i=0;
+ mt=setInterval(()=>{const c=ch[Math.floor(i/4)%4];tone(sc[c[i%3]]/ (i%8===0?2:1),1.6,"sine",.5,0,mg);i++},700)}
+function vol(v){D.snd.vol=v;if(mg)mg.gain.value=v*.25;save()}
+
+/* ---------- game ---------- */
+let G=null,gen=0;
+function rng(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function newGame(d){
+ gen++;const df=DF[d];let r=Math.random;
+ if(d==="daily"){const k=new Date().toISOString().slice(0,10);r=rng([...k].reduce((h,c)=>h*31+c.charCodeAt(0)|0,7))}
+ const sy=shuffle(EM,r).slice(0,df.p),cards=shuffle([...sy,...sy],r).map((s,i)=>({id:i,s,open:false,done:false}));
+ G={d,df,cards,sel:[],lock:true,att:0,mat:0,mis:0,st:0,pts:0,el:0,last:0,run:false,paused:false,over:false,gen};
+ const b=$("#board");b.style.setProperty("--rows",df.rows);
+ b.innerHTML=cards.map(c=>`<button class="card" data-a="card" data-i="${c.id}" aria-label="Memory card"><div class="in"><div class="fc bk">🧠</div><div class="fc fr">${c.s}</div></div></button>`).join("");
+ $("#gt").textContent=df.n+(d==="daily"?" challenge":"");ui();
+ countdown();
+}
+function countdown(){
+ const g=G.gen;let n=3;const show=t=>{$("#bx").innerHTML=`<div style="text-align:center"><div class="cd">${t}</div></div>`;$("#sheet").classList.remove("hidden")};
+ const step=()=>{if(!G||G.gen!==g)return;if(n>0){show(n);sfx("cd");n--;setTimeout(step,800)}else{show("GO!");sfx("go");setTimeout(()=>{if(!G||G.gen!==g)return;closeSheet();G.lock=false;G.run=true;G.last=performance.now()},600)}};
+ step();
+}
+function pick(i){
+ if(!G||G.lock||G.paused||G.over||!G.run)return;
+ const c=G.cards[i];if(!c||c.open||c.done)return;
+ c.open=true;G.sel.push(c);flip(c,true);sfx("flip");
+ if(G.sel.length<2)return;
+ G.lock=true;G.att++;const[a,b]=G.sel,g=G.gen;
+ if(a.s===b.s){
+  a.done=b.done=true;G.mat++;G.st++;G.pts+=Math.round(100*G.df.m)+Math.round(25*(G.st-1)*G.df.m);G.sel=[];G.lock=false;
+  [a,b].forEach(x=>mark(x));sfx("match");ui();
+  if(G.mat===G.df.p)setTimeout(()=>{if(G&&G.gen===g)finish()},550);
+ }else{
+  G.mis++;G.st=0;G.pts=Math.max(0,G.pts-Math.round(15*G.df.m));ui();sfx("bad");
+  setTimeout(()=>{if(!G||G.gen!==g)return;a.open=b.open=false;flip(a,false);flip(b,false);G.sel=[];G.lock=false},900);
+ }
+ ui();
+}
+const el=c=>$(`#board [data-i="${c.id}"]`);
+const flip=(c,on)=>{const e=el(c);e&&e.classList.toggle("f",on)};
+const mark=c=>{const e=el(c);e&&e.classList.add("m")};
+const acc=()=>G.att?Math.round(G.mat/G.att*100):100;
+function ui(){if(!G)return;
+ $("#s-t").textContent=fmt(G.el);$("#s-a").textContent=G.att;$("#s-m").textContent=G.mat;$("#s-x").textContent=G.mis;$("#s-c").textContent=acc()+"%";$("#s-s").textContent=G.pts}
+setInterval(()=>{const n=performance.now();if(G&&G.run&&!G.paused&&!G.over){G.el+=n-G.last;ui()}if(G)G.last=n},250);
+document.addEventListener("visibilitychange",()=>{if(document.hidden&&G&&G.run&&!G.paused&&!G.over)pause()});
+
+function finish(){
+ G.over=true;G.run=false;const sec=G.el/1000,df=G.df,a=acc();
+ const par=df.p*12,tb=Math.round(Math.max(0,par-sec)*2*df.m),ab=Math.round(a/100*df.p*20*df.m);
+ const score=Math.max(0,G.pts+tb+ab);
+ const prev=D.results.filter(r=>r.d===G.d),pbS=prev.length?Math.max(...prev.map(r=>r.s)):0,pbT=prev.length?Math.min(...prev.map(r=>r.t)):Infinity;
+ const rec={n:D.name,s:score,d:G.d,t:Math.round(G.el),a:G.att,x:G.mis,c:a,dt:Date.now()};
+ D.results.push(rec);
+ const before={...D.ach},ok=unlocked();const now=Date.now();
+ Object.keys(ok).forEach(k=>{if(!D.ach[k])D.ach[k]=now});
+ save();
+ const nw=AC.filter(x=>D.ach[x[0]]&&!before[x[0]]);
+ const newS=score>pbS,newT=rec.t<pbT;
+ sfx("lvl");setTimeout(()=>sfx("win"),500);confetti();
+ $("#bx").innerHTML=`<h2 style="text-align:center;font-size:26px">CONGRATULATIONS!</h2><div class="big">${score}</div><div style="text-align:center;color:var(--mu)">${df.n} · final score</div>
+ ${newS||newT?`<div class="new">🏆 New personal record${newS&&newT?" (score & time)":newT?" (time)":""}!</div>`:""}
+ <div class="grid3" style="margin:12px 0"><div class="st"><b>${fmt(rec.t)}</b><span>Time</span></div><div class="st"><b>${rec.a}</b><span>Attempts</span></div><div class="st"><b>${rec.x}</b><span>Mistakes</span></div><div class="st"><b>${a}%</b><span>Accuracy</span></div><div class="st"><b>+${tb}</b><span>Speed bonus</span></div><div class="st"><b>+${ab}</b><span>Accuracy bonus</span></div></div>
+ ${nw.map(x=>`<div class="badge"><i>${x[1]}</i><div><b>${x[2]}</b><div class="note" style="margin:0">Achievement unlocked!</div></div></div>`).join("")}
+ <div class="row" style="margin-top:12px"><button class="btn pri" style="flex:1" data-a="again">Play again</button><button class="btn" style="flex:1" data-a="home">Dashboard</button></div>`;
+ $("#sheet").classList.remove("hidden");
+}
+function unlocked(){const R=D.results,l=R[R.length-1]||{},o={};
+ if(R.length>=1)o.first=1;if(R.some(r=>r.x===0))o.perfect=1;if(R.some(r=>r.t<60000))o.speed=1;if(R.some(r=>r.d==="hard"))o.champ=1;if(R.length>=5)o.five=1;if(R.some(r=>r.c===100))o.acc=1;return o}
+
+/* ---------- views ---------- */
+function openSheet(h){$("#bx").innerHTML=h+`<button class="btn" style="width:100%;margin-top:12px" data-a="close">Close</button>`;$("#sheet").classList.remove("hidden")}
+function closeSheet(){$("#sheet").classList.add("hidden")}
+function home(){gen++;G=null;$("#game").classList.add("hidden");$("#home").classList.remove("hidden");closeSheet();renderHome()}
+function renderHome(){
+ $("#nick").value=D.name;
+ $("#seg").innerHTML=["easy","medium","hard"].map(k=>`<button data-a="diff" data-d="${k}" class="${D.diff===k?"on":""}"><b>${DF[k].n}</b><small>${DF[k].p} pairs · ${DF[k].p*2} cards</small></button>`).join("");
+ const R=D.results,d=R.filter(r=>r.d===D.diff);
+ $("#hb").textContent=d.length?Math.max(...d.map(r=>r.s)):0;$("#ht").textContent=d.length?fmt(Math.min(...d.map(r=>r.t))):"–";
+ $("#hg").textContent=R.length;$("#hm").textContent=R.reduce((s,r)=>s+DF[r.d].p,0);
+ $("#hw").textContent=(R.length?Math.round(R.reduce((s,r)=>s+r.c,0)/R.length):0)+"%";$("#hs").textContent=Object.keys(D.ach).length+"/"+AC.length;
+ const rk=rankOf(D.diff);$("#rank").textContent=rk?`Rank #${rk} in ${DF[D.diff].n}`:"No ranked games yet";
+}
+function rankOf(df){const l=D.results.filter(r=>r.d===df).sort((a,b)=>b.s-a.s),i=l.findIndex(r=>r.n===D.name);return i<0?0:i+1}
+function startGame(d){$("#home").classList.add("hidden");$("#game").classList.remove("hidden");newGame(d)}
+function pause(){if(!G||!G.run||G.paused||G.over)return;G.paused=true;openSheet(`<h2>Paused</h2><p class="note">Time: ${fmt(G.el)}. The timer is stopped.</p><button class="btn pri" style="width:100%;margin-top:8px" data-a="resume">Resume</button>`);$("#bx").lastElementChild.remove()}
+function resume(){if(!G)return;G.paused=false;G.last=performance.now();closeSheet()}
+let LB={s:"score",d:"all"};
+function lbHTML(){
+ let l=D.results.filter(r=>LB.d==="all"||r.d===LB.d);
+ l=l.slice().sort((a,b)=>LB.s==="score"?b.s-a.s:a.t-b.t);
+ const mine=l.findIndex(r=>r.n===D.name),top=l.slice(0,10);
+ const hist=D.results.filter(r=>r.n===D.name).slice(-5).reverse();
+ const row=(r,i)=>`<tr><td>${i+1}</td><td>${esc(r.n)}</td><td>${r.s}</td><td>${DF[r.d].n}</td><td>${fmt(r.t)}</td><td>${r.a}</td><td>${r.c}%</td><td>${new Date(r.dt).toLocaleDateString()}</td></tr>`;
+ const hd=`<tr><th>#</th><th>Player</th><th>Score</th><th>Mode</th><th>Time</th><th>Tries</th><th>Acc</th><th>Date</th></tr>`;
+ return `<h2>🏆 Leaderboard</h2><div class="row"><button class="btn sm ${LB.s==="score"?"pri":""}" data-a="lbs" data-v="score">Top score</button><button class="btn sm ${LB.s==="time"?"pri":""}" data-a="lbs" data-v="time">Fastest</button>
+ <select class="nick" style="width:auto" id="lbd">${["all","easy","medium","hard","daily"].map(k=>`<option value="${k}" ${LB.d===k?"selected":""}>${k==="all"?"All modes":DF[k].n}</option>`).join("")}</select></div>
+ <p class="note">${mine>=0?`Your best rank here: #${mine+1} of ${l.length}`:"You have no result in this view yet."}</p>
+ <div class="sc">${top.length?`<table class="tbl">${hd}${top.map(row).join("")}</table>`:`<p class="note">No results yet. Finish a game to appear here.</p>`}</div>
+ <h3 style="margin:14px 0 4px">Your recent games</h3><div class="sc">${hist.length?`<table class="tbl">${hd}${hist.map(row).join("")}</table>`:`<p class="note">Nothing played yet.</p>`}</div>
+ <p class="note">Records are stored only in this browser on this device. They are not shared online, and clearing site data erases them.</p>`}
+const showLB=()=>openSheet(lbHTML());
+const setHTML=()=>`<h2>🔊 Sound settings</h2>
+ <div class="tg"><span>Sound effects</span><button class="btn sm ${D.snd.sfx?"pri":""}" data-a="tsfx">${D.snd.sfx?"On":"Off"}</button></div>
+ <div class="tg"><span>Background music</span><button class="btn sm ${D.snd.music?"pri":""}" data-a="tmus">${D.snd.music?"On":"Off"}</button></div>
+ <div class="tg" style="display:block"><span>Volume</span><input type="range" id="vol" min="0" max="100" value="${Math.round(D.snd.vol*100)}"></div>`;
+function confetti(){
+ const c=$("#cf"),x=c.getContext("2d");c.classList.remove("hidden");c.width=innerWidth;c.height=innerHeight;
+ const P=Array.from({length:110},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,v:2+Math.random()*3,r:3+Math.random()*4,w:Math.random()*6,c:["#79E6C4","#3fc4c9","#fff","#ffd36b"][Math.floor(Math.random()*4)]}));
+ const t0=performance.now();(function f(t){if(t-t0>3500){c.classList.add("hidden");return}x.clearRect(0,0,c.width,c.height);
+ P.forEach(p=>{p.y+=p.v;p.x+=Math.sin(p.w+=.05)*1.5;x.fillStyle=p.c;x.fillRect(p.x,p.y,p.r,p.r*1.6)});requestAnimationFrame(f)})(t0)}
+
+/* ---------- events ---------- */
+const A={
+ card:b=>pick(+b.dataset.i),
+ start:()=>startGame(D.diff),daily:()=>startGame("daily"),
+ diff:b=>{D.diff=b.dataset.d;save();renderHome()},
+ lb:showLB,ach:()=>openSheet(`<h2>🎖 Achievements</h2>${AC.map(a=>`<div class="badge ${D.ach[a[0]]?"":"lock"}"><i>${D.ach[a[0]]?a[1]:"🔒"}</i><div><b>${a[2]}</b><div class="note" style="margin:0">${a[3]}${D.ach[a[0]]?" · Unlocked "+new Date(D.ach[a[0]]).toLocaleDateString():""}</div></div></div>`).join("")}`),
+ set:()=>openSheet(setHTML()),
+ lbs:b=>{LB.s=b.dataset.v;$("#bx").innerHTML=lbHTML()+`<button class="btn" style="width:100%;margin-top:12px" data-a="close">Close</button>`},
+ tsfx:()=>{D.snd.sfx=!D.snd.sfx;save();$("#bx").innerHTML=setHTML()+`<button class="btn" style="width:100%;margin-top:12px" data-a="close">Close</button>`},
+ tmus:()=>{D.snd.music=!D.snd.music;save();music(D.snd.music);$("#bx").innerHTML=setHTML()+`<button class="btn" style="width:100%;margin-top:12px" data-a="close">Close</button>`},
+ close:closeSheet,
+ pause,resume,
+ restart:()=>{if(!G||!G.run||G.over)return;G.paused=true;openSheet(`<h2>Restart game?</h2><p class="note">Your current progress will be lost.</p><div class="row"><button class="btn pri" style="flex:1" data-a="restartYes">Restart</button><button class="btn" style="flex:1" data-a="resume">Keep playing</button></div>`);$("#bx").lastElementChild.remove()},
+ restartYes:()=>{const d=G.d;newGame(d)},
+ again:()=>{const d=G?G.d:D.diff;newGame(d)},
+ home
+};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;
+ if(a!=="card")sfx("click");if(A[a])A[a](b)});
+document.addEventListener("change",e=>{if(e.target.id==="lbd"){LB.d=e.target.value;$("#bx").innerHTML=lbHTML()+`<button class="btn" style="width:100%;margin-top:12px" data-a="close">Close</button>`}});
+document.addEventListener("input",e=>{if(e.target.id==="vol")vol(e.target.value/100)});
+$("#nick").addEventListener("change",e=>{const v=e.target.value.trim().slice(0,14);D.name=v||"Player";e.target.value=D.name;save();renderHome()});
+document.addEventListener("pointerdown",()=>{if(D.snd.music&&!mt)music(true)},{once:true});
+renderHome();
+</script>
+</body>
+</html>
